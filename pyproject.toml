@@ -1,0 +1,45 @@
+[tool.poetry]
+name = "connect-product-integrity-checker"
+version = "0.1.0"
+description = ""
+authors = ["David Unay Santisteban <davidunay.santisteban@cloudblue.com>"]
+license = "Apache-2.0"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+connect-openapi-client = "^24.2"
+jsonpickle = "^2.1.0"
+
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.0.1"
+pytest-cov = "^3.0.0"
+pytest-mock = "^3.7.0"
+coverage = "^6.3.1"
+responses = "^0.18.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = "tests"
+addopts = "--cov=caas_ext --cov=cats --cov-report=term-missing:skip-covered --cov-report=html --cov-report=xml"
+
+[tool.coverage.run]
+omit = ["tests/*", "venv*/*", "setup.py"]
+relative_files = true
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __str__",
+    "def __repr__",
+    "import",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]
+
+[tool.coverage.html]
+skip_covered = true
